@@ -4,7 +4,7 @@ This project is a SQL-driven crime investigation based on the open-source SQL Mu
 
 ## Project Overview
 
-This project uses **Structured Query Language (SQL)** to investigate a fictional homicide that occurred in **SQL City on January 15, 2018**.
+This project uses **Structured Query Language (SQL)** to investigate a fictional homicide that occurred in **SQL City in 2026**.
 
 The investigation begins with a single record in a `crime_scene_report` table and progressively connects information from witness interviews, gym membership records, gym check-ins, driver's licenses, and person records.
 
