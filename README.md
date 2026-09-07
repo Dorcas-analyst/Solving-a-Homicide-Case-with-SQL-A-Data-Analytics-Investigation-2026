@@ -1,14 +1,8 @@
 # Solving-a-Homicide-Case-with-SQL-A-Data-Analytics-Investigation-2026
 This project is a SQL-driven crime investigation based on the open-source SQL Murder Mystery dataset.
-# 🔎 SQL City Homicide Case Investigation
+# SQL City Homicide Case Investigation
 
-![SQL](https://img.shields.io/badge/SQL-Analysis-blue)
-![Database](https://img.shields.io/badge/Database-Relational-orange)
-![Project Type](https://img.shields.io/badge/Project-Data%20Analytics-green)
-
----
-
-## 📌 Project Overview
+## Project Overview
 
 This project uses **Structured Query Language (SQL)** to investigate a fictional homicide that occurred in **SQL City on January 15, 2018**.
 
@@ -20,7 +14,7 @@ The project is based on the open-source **SQL Murder Mystery** dataset developed
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 The main objectives of this project were to:
 
@@ -34,7 +28,7 @@ The main objectives of this project were to:
 
 ---
 
-## 🗃️ Dataset & Tables
+## Dataset & Tables
 
 The investigation used several interconnected relational tables:
 
@@ -54,7 +48,7 @@ Two intermediate tables were also created during the investigation:
 
 ---
 
-## 🔍 Investigation Workflow
+## Investigation Workflow
 
 ### 1. Establishing the Crime
 
@@ -178,11 +172,11 @@ LEFT JOIN person AS p
 
 The intersection of the gym-membership and license-plate clues identified:
 
-### 🚨 Jeremy Bowers — The Shooter
+### Jeremy Bowers — The Shooter
 
 ---
 
-## 🧩 Identifying the Mastermind
+## Identifying the Mastermind
 
 The investigation did not end with identifying the shooter.
 
@@ -210,7 +204,7 @@ The compound filtering isolated the woman who hired Jeremy Bowers.
 
 ---
 
-## 💡 Key Insights
+## Key Insights
 
 ### 1. Combining Partial Clues Increases Accuracy
 
@@ -265,7 +259,7 @@ Rather than stopping at the first apparent match, the investigation required ano
 
 ---
 
-## 📊 Data Visualization
+## Data Visualization
 
 Although the investigation was primarily SQL-based, visualization was used to communicate the analytical process to non-technical audiences.
 
@@ -278,7 +272,7 @@ The visualizations were generated from counts and dates established during the S
 
 ---
 
-## 🛠️ Tools & Technologies
+## Tools & Technologies
 
 | Tool / Technology        | Application                                         |
 | ------------------------ | --------------------------------------------------- |
@@ -291,7 +285,7 @@ The visualizations were generated from counts and dates established during the S
 
 ---
 
-## 📈 Skills Demonstrated
+## Skills Demonstrated
 
 * SQL Querying
 * Data Filtering
@@ -307,7 +301,7 @@ The visualizations were generated from counts and dates established during the S
 
 ---
 
-## 🏆 Results
+## Results
 
 The investigation successfully resolved the case through a sequence of SQL-based analytical steps.
 
@@ -335,7 +329,7 @@ The person who hired Jeremy Bowers was identified using a compound filter based 
 
 ---
 
-## 📁 Suggested Repository Structure
+## Suggested Repository Structure
 
 ```text
 sql-city-homicide-investigation/
@@ -358,13 +352,13 @@ sql-city-homicide-investigation/
 
 ---
 
-## 📚 Dataset Reference
+## Dataset Reference
 
 This project uses the **SQL Murder Mystery** dataset and case design adapted from the open-source project created by **Knight Lab, Northwestern University**.
 
 ---
 
-## 👩‍💻 Project Takeaway
+## Project Takeaway
 
 This project demonstrates how SQL can be used beyond basic querying to perform **structured investigative analysis**.
 
@@ -377,9 +371,5 @@ The techniques demonstrated here are transferable to real-world applications suc
 * Operational data reconciliation
 * Identity resolution
 * Data quality investigation
-
----
-
-### ⭐ If you found this project useful, feel free to explore the repository and review the SQL investigation script.
 
 
