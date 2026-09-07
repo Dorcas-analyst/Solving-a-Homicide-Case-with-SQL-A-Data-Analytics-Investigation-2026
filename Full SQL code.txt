@@ -1,0 +1,119 @@
+SELECT * FROM crime_scene_report
+WHERE date = 20180115
+AND
+city = 'SQL City'
+AND 
+crime_type = 'murder'
+
+/*Security footage shows that there were 2 witnesses. The first witness lives
+at the last house on "Northwestern Dr". The second witness Annabel lives somewhere
+on "Franklin Ave"*/
+
+-- find what the two witnesses said
+SELECT * FROM person
+
+-- The first witness lives at the last house on "Northwestern Dr" 
+SELECT * FROM person
+WHERE address_street_name = 'Northwestern Dr'
+ORDER BY address_number DESC
+
+-- First witness is Morty Schapiro
+
+-- The second witness, name Annabel lives somewhere on "Franklin Ave"
+SELECT * FROM person
+WHERE name LIKE 'Annabel%'
+AND address_street_name = 'Franklin Ave'
+
+-- "Annabel Miller", 490173, 103, "Franklin Ave", 318771143
+
+-- Next in line is finding what these witness have said in an interview 
+-- or if they have not been interviewed, schedule them for one
+
+SELECT * FROM interview
+WHERE person_id IN (14887, 16371)
+
+/*Morty said "I heard a gunshot and then saw a man run out. 
+He had a ""Get Fit Now Gym"" bag. The membership number on the bag 
+started with ""48Z"". Only gold members have those bags. 
+The man got into a car with a plate that included ""H42W"".*/
+
+
+/*Annabel said "I saw the murder happen, and I recognized the killer 
+from my gym when I was working out last week on January the 9th."*/
+
+-- Morty said I heard a gunshot and then saw a man run out. He had a ""Get Fit Now Gym"" bag. 
+-- The membership number on the bag started with ""48Z""
+-- The man got into a car with a plate that included ""H42W""
+
+CREATE TABLE suspects AS
+(SELECT * FROM get_fit_now_member
+WHERE id LIKE '48%'
+AND 
+membership_status = 'gold')
+
+SELECT * FROM suspects
+
+/* Our results panned out two suspects */
+
+-- id= "48Z7A", name = "Joe Germuska", membership_start_date = 20160305
+-- id= "48Z55", name = "Jeremy Bowers", membership_start_date = 20160101 
+
+-- Based on the second witness account, check who was at the gym on January the 9th
+
+SELECT * FROM get_fit_now_check_in
+WHERE check_in_date = 20170109
+AND
+membership_id IN ('4D5R1', '4KB72')
+
+-- Both came on the 9th Jan
+-- One detail left out is the drivers license
+
+SELECT * FROM drivers_license
+WHERE plate_number LIKE 'H42W%'
+OR
+plate_number LIKE '%H42W%'
+OR
+plate_number LIKE '%H42W'
+
+
+/* We had three results from searching for the plate numbers as seen in the drivers
+license table and as found 3 likelihoods but they do not have names nor things that could help
+us trace them hence we can join person table to license table so we can pin
+point who has what id */
+
+CREATE TABLE full_data AS
+(SELECT dl.age, dl.height, dl.hair_color, dl.gender, dl.plate_number, 
+dl.car_make, dl.car_model, p.name, p.ssn, p.address_street_name, 
+p.id
+FROM drivers_license AS dl
+LEFT JOIN person AS p
+ON dl.id = p.license_id
+)
+
+SELECT * FROM full_data
+WHERE plate_number LIKE 'H42W%'
+OR
+plate_number LIKE '%H42W%'
+OR
+plate_number LIKE '%H42W'
+
+-- Our killer is Jeremy
+SELECT * FROM interview
+WHERE person_id = 67318
+
+/*Jeremy said that "I was hired by a woman with a lot of money. 
+I don't know her name but I know she's around 5'5"" (65"") or 5'7"" (67"").
+She has red hair and she drives a Tesla Model S. I know that she attended 
+the SQL Symphony Concert 3 times in December 2017. */
+
+SELECT * FROM full_data
+WHERE height BETWEEN 65 AND 67
+AND
+hair_color = 'red'
+AND 
+gender = 'female'
+AND
+car_make = 'Tesla'
+AND 
+car_model = 'Model S'
+
